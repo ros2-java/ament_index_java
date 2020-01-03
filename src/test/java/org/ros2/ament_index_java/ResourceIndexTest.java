@@ -38,7 +38,8 @@ public class ResourceIndexTest extends AmentIndexTestFixture {
       assertEquals("foo_type", result.getType());
       assertEquals("foo", result.getName());
       assertEquals(prefixPath2, result.getPrefixPath());
-      assertEquals("This is dummy content for test purposes.\n", result.getContent());
+      assertEquals(
+          String.format("This is dummy content for test purposes.%n"), result.getContent());
     }
     // Get marker with multi-line content
     {
@@ -46,7 +47,7 @@ public class ResourceIndexTest extends AmentIndexTestFixture {
       assertEquals("bar_type", result.getType());
       assertEquals("bar", result.getName());
       assertEquals(prefixPath2, result.getPrefixPath());
-      assertEquals("Multi-line\ntest\ndata\n.\n", result.getContent());
+      assertEquals(String.format("Multi-line%ntest%ndata%n.%n"), result.getContent());
     }
     // With the same marker in both prefix paths, assert we get the content from the first prefix
     {
@@ -54,7 +55,8 @@ public class ResourceIndexTest extends AmentIndexTestFixture {
       assertEquals("test_duplicate_resource", result.getType());
       assertEquals("foo", result.getName());
       assertEquals(prefixPath1, result.getPrefixPath());
-      assertEquals("This content is from the first prefix path\n", result.getContent());
+      assertEquals(
+          String.format("This content is from the first prefix path%n"), result.getContent());
     }
   }
 
